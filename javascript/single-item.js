@@ -1,39 +1,24 @@
-.single-item {
-  display: grid;
-  grid-template-columns: auto 1fr auto auto;
-  column-gap: 1rem;
-  align-items: center;
-}
+import { editCompleted } from "./app.js";
 
-.single-item p {
-  text-transform: capitalize;
-  margin: 0;
-}
+export function createSingleItem(item) {
+  const div = document.createElement("div");
+  div.className = "single-item";
 
-.single-item input[type="checkbox"] {
-  cursor: pointer;
-  width: 1rem;
-  height: 1rem;
-}
+  div.innerHTML = `
+    <input type="checkbox" ${item.completed ? "checked" : ""} />
+    <p style="text-decoration: ${item.completed ? "line-through" : "none"}">
+      ${item.name}
+    </p>
+    <button class="btn icon-btn edit-btn" type="button">
+      <i class="fa-regular fa-pen-to-square"></i>
+    </button>
+    <button class="btn icon-btn remove-btn" type="button">
+      <i class="fa-regular fa-trash-can"></i>
+    </button>
+  `;
 
-.single-item .btn {
-  cursor: pointer;
-  color: #fff;
-  background: #06b6d4;
-  border: transparent;
-  border-radius: 0.25rem;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-}
+  const checkbox = div.querySelector('input[type="checkbox"]');
+  checkbox.addEventListener("change", () => editCompleted(item.id));
 
-.single-item .btn:hover {
-  background: #0e7490;
-}
-
-.single-item .remove-btn {
-  background: #222;
-}
-
-.single-item .remove-btn:hover {
-  background: #900e0e;
+  return div;
 }

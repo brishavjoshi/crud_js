@@ -1,20 +1,17 @@
 import { groceryItems } from "./data.js";
 import { createItems } from "./items.js";
 
-let items = groceryItems;
+let items = [...groceryItems];
 
-// Render App
 function render() {
   const app = document.getElementById("app");
+  if (!app) return;
+  
   app.innerHTML = "";
-
   const itemsElement = createItems(items);
   app.appendChild(itemsElement);
 }
 
-// ....
-
-// Edit Completed Function
 export function editCompleted(itemId) {
   items = items.map((item) => {
     if (item.id === itemId) {
@@ -24,3 +21,5 @@ export function editCompleted(itemId) {
   });
   render();
 }
+
+render();
