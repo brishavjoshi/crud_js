@@ -6,15 +6,28 @@
     <title>Grocery Bud</title>
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
     <link rel="stylesheet" href="css/global.css" />
-    <link rel="stylesheet" href="css/single-item.css" />
-    <link rel="stylesheet" href="css/items.css" />
     <link rel="stylesheet" href="css/form.css" />
+    <link rel="stylesheet" href="css/items.css" />
+    <link rel="stylesheet" href="css/single-item.css" />
   </head>
   <body>
     <section class="section-center">
+      <form class="grocery-form">
+        <h2>grocery bud</h2>
+        <div class="form-control">
+          <input 
+            type="text" 
+            id="grocery" 
+            class="form-input" 
+            placeholder="e.g. eggs" 
+          />
+          <button type="submit" class="btn">add item</button>
+        </div>
+      </form>
+
       <div id="app"></div>
     </section>
 
