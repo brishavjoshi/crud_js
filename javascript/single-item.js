@@ -7,6 +7,7 @@
 
 .single-item p {
   text-transform: capitalize;
+  margin: 0;
 }
 
 .single-item input[type="checkbox"] {
