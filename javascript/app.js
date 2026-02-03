@@ -6,7 +6,6 @@ let items = [...groceryItems];
 function render() {
   const app = document.getElementById("app");
   if (!app) return;
-  
   app.innerHTML = "";
   const itemsElement = createItems(items);
   app.appendChild(itemsElement);
@@ -20,6 +19,12 @@ export function editCompleted(itemId) {
     return item;
   });
   render();
+}
+
+export function removeItem(itemId) {
+  items = items.filter((item) => item.id !== itemId);
+  render();
+  setTimeout(() => alert("Item Deleted Successfully!"), 0);
 }
 
 render();
