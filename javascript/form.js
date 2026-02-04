@@ -1,7 +1,6 @@
-import { addItem } from "./app.js";
+import { addItem, updateItemName } from "./app.js";
 
-// Create Form Element
-export function createForm() {
+export function createForm(editId, itemToEdit) {
   const form = document.createElement("form");
 
   form.innerHTML = `
@@ -11,9 +10,10 @@ export function createForm() {
         type="text"
         class="form-input"
         placeholder="e.g. eggs"
+        value="${itemToEdit ? itemToEdit.name : ""}"
       />
       <button type="submit" class="btn">
-        add item
+        ${editId ? "edit item" : "add item"}
       </button>
     </div>
   `;
@@ -24,11 +24,16 @@ export function createForm() {
     const value = input.value.trim();
 
     if (!value) {
-      alert("Please provide value");
+      alert("please provide value");
       return;
     }
 
-    addItem(value);
+    if (editId) {
+      updateItemName(value);
+    } else {
+      addItem(value);
+    }
+
     input.value = "";
   });
 
